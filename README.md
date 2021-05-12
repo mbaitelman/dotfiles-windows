@@ -1,8 +1,10 @@
-﻿# Jay Harris's dotfiles for Windows
+﻿# mbaitelmans's dotfiles for Windows
 
-A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults. 
 
-Are you a Mac user? Check out my [dotfiles](https://github.com/jayharris/dotfiles) repository.
+A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults.
+
+Forked from [jayharris/dotfiles-windows](https://github.com/jayharris/dotfiles-windows)
+
 
 ## Installation
 
@@ -12,7 +14,7 @@ You can clone the repository wherever you want. (I like to keep it in `~\Project
 
 From PowerShell:
 ```posh
-git clone https://github.com/jayharris/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
+git clone https://github.com/mbaitelman/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
 ```
 
 To update your settings, `cd` into your local `dotfiles-windows` repository within PowerShell and then:
@@ -30,7 +32,7 @@ Note: You must have your execution policy set to unrestricted (or at least in by
 To install these dotfiles from PowerShell without Git:
 
 ```bash
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/jayharris/dotfiles-windows/master/setup/install.ps1'))
+iex ((new-object net.webclient).DownloadString('https://raw.github.com/mbaitelman/dotfiles-windows/master/setup/install.ps1'))
 ```
 
 To update later on, just run that command again.
@@ -68,18 +70,13 @@ When setting up a new Windows PC, you may want to set some Windows defaults and 
 
 ### Install dependencies and packages
 
-When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js packages via [NPM](https://www.npmjs.org), [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Extensions from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/).
+When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js packages via [NPM](https://www.npmjs.org), [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Code Extensions from the [Visual Studio Code Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
 ```posh
 .\deps.ps1
 ```
 
-> The scripts will install Chocolatey, node.js, and WebPI if necessary.
-
-> **Visual Studio Extensions**  
-> Extensions will be installed into your most current version of Visual Studio. You can also install additional plugins at any time via `Install-VSExtension $url`. The Url can be found on the gallery; it's the extension's `Download` link url.
-
-
+> The scripts will install Chocolatey and node.js if necessary.
 
 ## Forking your own version
 
@@ -89,7 +86,7 @@ If you do fork for your own custom configuration, you will need to touch a few f
 
 Within `/setup/install.ps1`, modify the Repository variables.
 ```posh
-$account = "jayharris"
+$account = "mbaitelman"
 $repo    = "dotfiles-windows"
 $branch  = "master"
 ```
@@ -110,12 +107,7 @@ iex ((new-object net.webclient).DownloadString('https://raw.github.com/$account/
 Suggestions/improvements are
 [welcome and encouraged](https://github.com/jayharris/dotfiles-windows/issues)!
 
-## Author
-
-| [![twitter/jayharris](http://gravatar.com/avatar/1318668b99b2d5a3900f3f7758763a69?s=70)](http://twitter.com/jayharris "Follow @jayharris on Twitter") |
-|---|
-| [Jay Harris](http://twitter.com/jayharris/) |
-
 ## Thanks to…
 
+* Jay Harris for the original [repo](https://github.com/jayharris/dotfiles-windows).
 * @[Mathias Bynens](http://mathiasbynens.be/) for his [OS X dotfiles](http://mths.be/dotfiles), which this repository is modeled after.
