@@ -26,3 +26,34 @@ function Show-Notification {
     $Notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier("PowerShell")
     $Notifier.Show($Toast);
 }
+
+function Show-TKNotification {
+    param (
+        [Parameter(Mandatory=$false)][string]$suites = ''
+    )
+    $response_data = @()
+    $files = Get-ChildItem -Path inspecreports -Recurse -Include *.json -Filter *$filefilter* #This assumes you have a folder called inspecreports for the responses 
+    $response_data = @()
+    for($i=0; $i -lt $files.Count; $i++){
+        $inspec_json = (convertfrom-json (get-content $files[$i]) ) 
+        $suite_name = $files[$i].name.trim('.json')
+
+        $passed = 0
+        $failed = 0
+    
+        foreach($control in $inspec_json.profiles[0].controls){
+            foreach($result in $control.results){
+                if( $result.status -eq 'passed'){
+                    $passed ++
+                } else {
+                    $failed ++ 
+                }
+            }
+        }
+        # array add text
+        $response_data += "$suite_name $passed/$failed"
+    }
+
+    Show-Notification -ToastTitle "TK Complete" -ToastText ($response_data -join "`r`n" | Out-String)
+
+}
