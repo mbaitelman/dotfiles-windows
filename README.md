@@ -1,10 +1,8 @@
 ﻿# mbaitelmans's dotfiles for Windows
 
-
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults.
 
 Forked from [jayharris/dotfiles-windows](https://github.com/jayharris/dotfiles-windows)
-
 
 ## Installation
 
@@ -13,6 +11,7 @@ Forked from [jayharris/dotfiles-windows](https://github.com/jayharris/dotfiles-w
 You can clone the repository wherever you want. (I like to keep it in `~\Projects\dotfiles-windows`.) The bootstrapper script will copy the files to your PowerShell Profile folder.
 
 From PowerShell:
+
 ```posh
 git clone https://github.com/mbaitelman/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
 ```
@@ -85,6 +84,7 @@ This repository is built around how I use Windows, which is predominantly in a V
 If you do fork for your own custom configuration, you will need to touch a few files to reference your own repository, instead of mine.
 
 Within `/setup/install.ps1`, modify the Repository variables.
+
 ```posh
 $account = "mbaitelman"
 $repo    = "dotfiles-windows"
@@ -93,12 +93,14 @@ $branch  = "master"
 
 Within the Windows Defaults file, `/windows.ps1`, modify the Machine
 name on the first line.
+
 ```posh
 (Get-WmiObject Win32_ComputerSystem).Rename("MyMachineName") | Out-Null
 ```
 
 Finally, be sure to reference your own repository in the git-free installation command.
-```bash
+
+```powershell
 iex ((new-object net.webclient).DownloadString('https://raw.github.com/$account/$repo/$branch/setup/install.ps1'))
 ```
 

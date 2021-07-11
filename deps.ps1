@@ -54,6 +54,7 @@ code --install-extension ms-vscode-remote.remote-containers
 code --install-extension vscjava.vscode-java-pack # java tools
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension ms-vscode.powershell
+code --install-extension ms-vscode-remote.remote-ssh # SSH remote
 
 #fonts
 # choco install sourcecodepro       --limit-output
