@@ -93,15 +93,13 @@ Write-Host "Installing Windows Features..." -ForegroundColor "Yellow"
 #     "Microsoft-Hyper-V"
 #     -Restart | Out-Null
 
-### Node Packages
-Write-Host "Installing Node Packages..." -ForegroundColor "Yellow"
-if (which npm) {
-    npm update npm
-    npm install -g gulp
-}
+#DSC
+#Install-Module -Name PSDesiredStateConfiguration -Repository PSGallery -MaximumVersion 2.99
 
-# ### Janus for vim
-# Write-Host "Installing Janus..." -ForegroundColor "Yellow"
-# if ((which curl) -and (which vim) -and (which rake) -and (which bash)) {
-#     curl.exe -L https://bit.ly/janus-bootstrap | bash
-# }
+#Settings
+## Disable desktop icons
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name HideIcons -Value 1
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name ShowCortanaButton -Value 0
+## Snap Prefernces 
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name SnapFill -Value 0
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name SnapAssist -Value 0
