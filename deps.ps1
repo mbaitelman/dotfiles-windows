@@ -1,11 +1,11 @@
 # Check to see if we are currently running "as Administrator"
 if (!(Verify-Elevated)) {
-   $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-   $newProcess.Arguments = $myInvocation.MyCommand.Definition;
-   $newProcess.Verb = "runas";
-   [System.Diagnostics.Process]::Start($newProcess);
+    $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+    $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+    $newProcess.Verb = "runas";
+    [System.Diagnostics.Process]::Start($newProcess);
 
-   exit
+    exit
 }
 
 
@@ -34,6 +34,7 @@ if ((which cinst) -eq $null) {
     Refresh-Environment
     choco feature enable -n=allowGlobalConfirmation
 }
+choco install chocolateygui               --limit-output
 
 # system and cli
 
@@ -42,8 +43,13 @@ choco install git.install           --limit-output -params '"/GitAndUnixToolsOnP
 choco install gitextensions         --limit-output
 choco install kdiff3                --limit-output
 choco install Fiddler               --limit-output
+choco install bat               --limit-output
+choco install awscli               --limit-output
+choco install Fiddler               --limit-output
+choco install postman               --limit-output
+choco install docker-desktop               --limit-output
 
-# chocolatet: vscode + exenstions
+# chocolatey: vscode + exenstions
 choco install vscode                --limit-output
 
 Refresh-Environment #Load `code` to path
@@ -55,6 +61,19 @@ code --install-extension vscjava.vscode-java-pack # java tools
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension ms-vscode.powershell
 code --install-extension ms-vscode-remote.remote-ssh # SSH remote
+
+#Social
+choco install slack               --limit-output
+choco install discord               --limit-output
+choco install whatsapp               --limit-output
+choco install zoom               --limit-output
+
+#Productivity
+choco install google-drive-file-stream               --limit-output
+choco install notion               --limit-output
+choco install powertoys               --limit-output
+
+
 
 #fonts
 # choco install sourcecodepro       --limit-output
